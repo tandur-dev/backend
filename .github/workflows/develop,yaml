@@ -1,0 +1,20 @@
+name : Testing deploy develop branches
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  first:
+    name: Pull from github to paykitaz dev testing server
+    runs-on: ubuntu-latest
+    steps:
+    - name: deploy to testing env
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.TANDUR_HOST }}
+        username: ${{ secrets.TANDUR_USER }}
+        key: ${{ secrets.TANDUR_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          cd ${{ secrets.TANDUR_DIR }}
+          git pull origin develop
