@@ -9,25 +9,20 @@ class User extends RestController{
     {
         // Construct the parent class
         parent::__construct();
-        $this->load->helper("url");
         $this->load->library(array('upload', 'image_lib'));
+		$this->load->model('UserModel');
     }
 
     public function login_post()
     {
         $param = $this->post();
-        if (!empty($param['username']) && !empty($param['password'])) {
-            $user = $this->db->get_where('pengguna', ['NAMA_PENGGUNA' => $param['username']])->result();
+        if (!empty($param['email']) && !empty($param['token'])) {
+			$user = $this->UserModel->get(['filter' => ['EMAIL_USER' => $param['email']]]);
+			
             if ($user != null) {
-                $resLogin = $this->db->get_where(
-                    'pengguna',
-                    ['NAMA_PENGGUNA' => $param['username'], 'PASSWORD_PENGGUNA' => $param['password']]
-                )->result();
-                if ($resLogin != null) {
-                    $this->response(['status' => true, 'message' => 'Data berhasil ditemukan' , 'data' => $resLogin[0]], 200);
-                }else{
-                    $this->response(['status' => false, 'message' => 'Username atau password salah' ], 200);
-                }
+				$this->UserModel->update(['EMAIL_USER' => $param['email'], 'TOKEN_USER' => $param['token']]);
+				$user[0]->TOKEN_USER = $param['token'];
+                $this->response(['status' => true, 'message' => 'Berhasil login', 'data' => $user[0]], 200);
             } else {
                 $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);
             }
@@ -59,7 +54,7 @@ class User extends RestController{
             $storeUser['SELFIE_USER'] 	= $fileSelfie;
             $storeUser['FOTO_USER'] 	= $fileProfil;
 
-            $this->db->insert('user', $storeUser);
+			$this->UserModel->insert($storeUser);
 			
 			$storeUser['ISVERIF_USER'] 	= "0";
 			
