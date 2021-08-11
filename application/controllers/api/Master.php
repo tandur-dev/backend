@@ -11,8 +11,8 @@ class Master extends RestController {
         parent::__construct();
     }
 
-    public function provinsi(){
-        $this->response(['status' => true, 'message' => 'Sukses']);
+    public function provinsi_get(){
+        $this->response(['status' => true, 'message' => 'Sukses'], 200);
     }
 
 }
