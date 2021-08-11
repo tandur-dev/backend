@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
+	'hostname' => 'tandur.yntkts.my.id',
+	'username' => 'tandur',
+	'password' => '1sampaitandur',
 	'database' => '',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
