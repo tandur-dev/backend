@@ -53,8 +53,13 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+// api lahan
 $route['api/lahan']         	= 'api/Lahan/index';
 $route['api/lahan/foto']    	= 'api/Lahan/foto';
 $route['api/lahan/galeri']  	= 'api/Lahan/galeri';
 $route['api/lahan/terdekat']    = 'api/Lahan/terdekat';
 $route['api/lahan/(:any)']      = 'api/Lahan/lahanDetail/$1';
+
+// api urbanfarming
+$route['api/urban-farming']['post']             = 'api/UrbanFarming/index_post';
+$route['api/urban-farming/selesai']['post']     = 'api/UrbanFarming/selesai';
