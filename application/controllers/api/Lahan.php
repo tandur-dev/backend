@@ -10,6 +10,7 @@ class Lahan extends RestController {
         // Construct the parent class
         parent::__construct();
         $this->load->model('LahanModel');
+        $this->load->library(array('upload', 'image_lib'));
     }
     public function lahanDetail_get($id){
         $lahan = $this->LahanModel->get(['filter' => ['ID_LAHAN' => $id]]);
