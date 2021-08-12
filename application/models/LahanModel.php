@@ -50,11 +50,11 @@ class LahanModel extends CI_Model{
         return $res;
     }
     public function insert($param){
-        $this->db->insert('user', $param);
+        $this->db->insert('lahan', $param);
         return $this->db->insert_id();
     }
     public function update($param){
-        $this->db->where('EMAIL_USER', $param['EMAIL_USER'])->update('user', $param);
+        $this->db->where('ID_LAHAN', $param['ID_LAHAN'])->update('lahan', $param);
         return true;
     }
     public function delete($param){
