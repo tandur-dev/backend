@@ -17,7 +17,10 @@ class LahanModel extends CI_Model{
     }
     public function getUlasan($param){
         $filter = !empty($param['filter'])? $param['filter'] : '';
-        $res    = $this->db->get_where('v_lahan_ulasan', $filter)->result();
+        if($param['limit'] != '-1'){
+            $this->db->limit($param['limit']);
+        }
+        $res    = $this->db->order_by('TGLULASAN_URBAN', 'desc')->get_where('v_lahan_ulasan', $filter)->result();
         return $res;
     }
     public function insert($param){
