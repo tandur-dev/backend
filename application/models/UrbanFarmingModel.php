@@ -7,12 +7,12 @@ class UrbanFarmingModel extends CI_Model{
     }
 
     public function getAll(){
-        $res = $this->db->get('v_lahan')->result();
+        $res = $this->db->get('v_urbanfarming')->result();
         return $res;
     }
     public function get($param){
         $filter = !empty($param['filter'])? $param['filter'] : '';
-        $res    = $this->db->get_where('v_lahan', $filter)->result();
+        $res    = $this->db->get_where('v_urbanfarming', $filter)->result();
         return $res;
     }
     public function insert($param){

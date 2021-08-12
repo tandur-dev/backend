@@ -42,10 +42,20 @@ class LahanModel extends CI_Model{
             l.LONGITUDE_LAHAN 
             FROM lahan l, md_provinsi mp , md_kota mk , md_kecamatan mk2 , md_kelurahan mk3 
             WHERE 
-            l.ID_PROVINSI = mp.ID_PROVINSI AND l.ID_KOTA = mk.ID_KOTA AND l.ID_KECAMATAN = mk2.ID_KECAMATAN AND l.ID_KELURAHAN = mk3.ID_KELURAHAN 
-            ORDER BY DISTANCE ASC
+            l.ID_PROVINSI = mp.ID_PROVINSI AND l.ID_KOTA = mk.ID_KOTA AND l.ID_KECAMATAN = mk2.ID_KECAMATAN AND l.ID_KELURAHAN = mk3.ID_KELURAHAN AND ISVERIF_LAHAN = "1"
+            ORDER BY JARAK_LAHAN ASC
             '.$limit.'
         ')->result();
+
+        return $res;
+    }
+    public function getBintang($param){
+        $res = $this->db->query(
+            'SELECT 
+                AVG(BINTANG_URBAN) AS BINTANG
+            from v_lahan_ulasan
+            WHERE ID_LAHAN = "'.$param['idLahan'].'" AND ISFINISHED_URBAN = "1"'
+        )->row();
 
         return $res;
     }
