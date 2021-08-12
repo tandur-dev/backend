@@ -32,7 +32,7 @@ class LahanModel extends CI_Model{
             ST_DISTANCE_SPHERE(
                 point('.$param['long'].', '.$param['lat'].'),
                 point(l.LONGITUDE_LAHAN , l.LATITUDE_LAHAN)
-            )/1000 as DISTANCE,
+            )/1000 as JARAK_LAHAN,
             mp.NAMA_PROVINSI ,
             mk.NAMA_KOTA ,
             mk2.NAMA_KECAMATAN ,
