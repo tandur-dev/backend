@@ -54,4 +54,5 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
-$route['api/lahan/(:any)'] = 'api/Lahan/lahanDetail/$1';
+$route['api/lahan/terdekat']    = 'api/Lahan/terdekat';
+$route['api/lahan/(:any)']      = 'api/Lahan/lahanDetail/$1';

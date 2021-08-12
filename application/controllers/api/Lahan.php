@@ -38,5 +38,15 @@ class Lahan extends RestController {
             $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);        
         }
     }
+    public function terdekat_get(){
+        $param = $this->get();
+        $lahans = $this->LahanModel->getTerdekat($param);
+
+        if($lahans != null){
+            $this->response(['status' => true, 'message' => 'Data berhasil ditemukan', 'data' => $lahans], 200);
+        }else{
+            $this->response(['status' => false, 'message' => 'Data tidak ditemukan'], 200);        
+        }
+    }
         
 }
