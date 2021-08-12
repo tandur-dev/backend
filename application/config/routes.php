@@ -53,7 +53,7 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['api/lahan/sewakan'] 	= 'api/Lahan/sewakan';
+$route['api/lahan']         	= 'api/Lahan/index';
 $route['api/lahan/foto']    	= 'api/Lahan/foto';
 $route['api/lahan/galeri']  	= 'api/Lahan/galeri';
 $route['api/lahan/terdekat']    = 'api/Lahan/terdekat';
