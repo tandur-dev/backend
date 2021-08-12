@@ -49,7 +49,7 @@ class Lahan extends RestController {
         }
     }
 	
-	public function sewakan_post()
+	public function index_post()
     {
         $param = $this->post();
         if (!empty($param['email']) && !empty($param['namaLahan'])) {
@@ -108,6 +108,27 @@ class Lahan extends RestController {
             $this->response(['status' => false, 'message' => 'Parameter tidak cocok'], 200);
         }
     }
+
+    public function galeri_post(){
+        $param = $this->post();
+        if(!empty($param['idLahan'])){
+            $galeri = $this->LahanModel->get(['filter' => ['ID_LAHAN' => $param['idLahan']]]);
+            
+            if($galeri != null){
+                $resUpload = $this->upload_file($param['idLahan']);
+                if($galeri[0]->GALLERY_LAHAN != null){                    
+                    $resUpload = $galeri[0]->GALLERY_LAHAN.';'.$resUpload;
+                }        
+                $this->LahanModel->update(['ID_LAHAN' => $param['idLahan'], 'GALLERY_LAHAN' => $resUpload]);
+                
+                $this->response(['status' => true, 'message' => 'Data berhasil ditambahkan'], 200);
+            }else{
+                $this->response(['status' => false, 'message' => 'Data lahan tidak ditemukan'], 200);
+            }
+        }else{
+            $this->response(['status' => false, 'message' => 'Parameter tidak cocok'], 200);
+        }
+    }
        
 	function upload_fotoSatu($email){
         $newPath = './uploads/lahan/'.$email.'/';
@@ -154,6 +175,38 @@ class Lahan extends RestController {
         if(!empty($_FILES['foto2']['name'])){
  
             if ($this->upload->do_upload('foto2')){
+                $gbr = $this->upload->data();
+                $config['image_library']='gd2';
+                $config['source_image']=$newPath.$gbr['file_name'];
+                $config['create_thumb']= FALSE;
+                $config['maintain_ratio']= true;
+                $config['width']= 600;
+                $config['new_image']= $newPath.$gbr['file_name'];
+                $this->load->library('image_lib', $config);
+                $this->image_lib->resize();
+ 
+                $gambar=$gbr['file_name'];
+
+                return base_url('/uploads/lahan/'.$email.'/'.$gambar);
+            }                      
+        }else{
+            return base_url('uploads/default.png');
+        }
+    }
+	
+	function upload_file($email){
+        $newPath = './uploads/lahan/'.$email.'/';
+        if(!is_dir($newPath)){
+            mkdir($newPath, 0777, TRUE);
+        }
+        $config['upload_path'] = $newPath;
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
+        $config['encrypt_name'] = TRUE;
+ 
+        $this->upload->initialize($config);
+        if(!empty($_FILES['file']['name'])){
+ 
+            if ($this->upload->do_upload('file')){
                 $gbr = $this->upload->data();
                 $config['image_library']='gd2';
                 $config['source_image']=$newPath.$gbr['file_name'];
