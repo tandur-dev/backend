@@ -75,5 +75,38 @@ class KelurahanController extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Kamar berhasil dihapus! </div>');
 
         redirect('Kamar');
-    } 
+    }
+    public function ajxGetData(){
+        $draw   = $_POST['draw'];
+        $offset = $_POST['start'];
+        $limit  = $_POST['length']; // Rows display per page
+        
+        $kelurahan = $this->MasterModel->getDataTable(['offset' => $offset, 'limit' => $limit, 'table' => 'md_kelurahan']);
+        $datas = array();
+        foreach ($kelurahan['records'] as $item) {
+            $datas[] = array( 
+                "idKelurahan" => $item->ID_KELURAHAN,
+                "nama"        => $item->NAMA_KELURAHAN,
+                "aksi"        => '
+                    <div class="btn-group" role="group">
+                        <button type="button" data-toggle="modal" data-id="" data-target="#mdlFoto" class="btn btn-dark btn-sm rounded mdlFoto" data-tooltip="tooltip" data-placement="top" title="Foto">
+                            <i class="fas fa-edit"></i>
+                        </button>&nbsp;
+                        <button type="button" data-toggle="modal" data-id="" data-name="" data-target="#mdlGallery" class="btn btn-dark btn-sm rounded mdlGallery" data-tooltip="tooltip" data-placement="top" title="Gallery">
+                            <i class="fas fa-trash"></i>
+                        </button>&nbsp;
+                    </div>
+                '
+            );
+        }
+
+        $response = array(
+            "draw" => intval($draw),
+            "recordsTotal" => $kelurahan['totalRecords'],
+            "recordsFiltered" => $kelurahan['totalRecords'],
+            "aaData" => $datas
+        );
+
+        echo json_encode($response);
+    }
 }

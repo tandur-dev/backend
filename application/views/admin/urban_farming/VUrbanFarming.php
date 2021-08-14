@@ -228,7 +228,6 @@
     <script>
         $(document).ready(function() {
             var table = $('#tableUrban').DataTable({
-                ordering: false,
                 "order": [
                     [0, 'asc']
                 ],
