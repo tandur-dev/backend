@@ -3680,18 +3680,18 @@ fieldset:disabled a.btn {
 
 .btn-green {
   color: #fff;
-  background-color: #687281;;
-  border-color: #687281;;
+  background-color: #A7D038 ;
+  border-color: #A7D038 ;
 }
 .btn-green:hover {
   color: #fff;
-  background-color: #008652;
-  border-color: #00794a;
+  background-color: #7CBD1E ;
+  border-color: #7CBD1E ;
 }
 .btn-green:focus, .btn-green.focus {
   color: #fff;
-  background-color: #008652;
-  border-color: #00794a;
+  background-color: #7CBD1E ;
+  border-color: #7CBD1E ;
   box-shadow: 0 0 0 0.2rem rgba(38, 184, 128, 0.5);
 }
 .btn-green.disabled, .btn-green:disabled {
@@ -7198,11 +7198,11 @@ a.badge-secondary:focus, a.badge-secondary.focus {
 
 .badge-success {
   color: #fff;
-  background-color: #687281;;
+  background-color: #7CBD1E;
 }
 a.badge-success:hover, a.badge-success:focus {
   color: #fff;
-  background-color: #00794a;
+  background-color: #e9fcf5;
 }
 a.badge-success:focus, a.badge-success.focus {
   outline: 0;
@@ -9809,7 +9809,7 @@ button.bg-yellow:focus {
 }
 
 .bg-green {
-  background-color: #687281; !important;
+  background-color: #7CBD1E; !important;
 }
 
 a.bg-green:hover, a.bg-green:focus,

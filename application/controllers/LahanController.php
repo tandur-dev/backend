@@ -13,13 +13,34 @@ class LahanController extends CI_Controller
 
     public function index()
     {
-        $lahan = $this->LahanModel->getAll();
+        $lahans = $this->LahanModel->getAll();
 
         $data = array(
             'title' => 'Lahan | Tandur',
-            'lahan' => $lahan
+            'lahans' => $lahans
         );
 
         $this->template->view('admin/lahan/VLahan', $data);
     }    
+
+    public function verif(){
+        $param = $_POST;
+        
+        $param['ISVERIF_LAHAN']     = "1";
+        $param['TGLVERIF_LAHAN']    = date('Y-m-d');
+        $param['updated_at']        = date('Y-m-d H:i:s');
+        $this->LahanModel->update($param);
+
+        redirect('lahan');
+    }
+    public function unverif(){
+        $param = $_POST;
+        
+        $param['ISVERIF_LAHAN']     = "2";
+        $param['TGLVERIF_LAHAN']    = date('Y-m-d');
+        $param['updated_at']        = date('Y-m-d H:i:s');
+        $this->LahanModel->update($param);
+
+        redirect('lahan');
+    }
 }
