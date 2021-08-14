@@ -68,3 +68,13 @@ $route['api/urban-farming/selesai']['post']     = 'api/UrbanFarming/selesai';
 $route['lahan']         = 'LahanController';
 $route['lahan/verif']   = 'LahanController/verif';
 $route['lahan/unverif'] = 'LahanController/unverif';
+
+// user
+$route['user']          = 'UserController';
+$route['user/verif']    = 'UserController/verif';
+$route['user/unverif']  = 'UserController/unverif';
+
+// urbanfarming
+$route['urban-farming']          = 'UrbanFarmingController';
+$route['urban-farming/verif']    = 'UrbanFarmingController/verif';
+$route['urban-farming/unverif']  = 'UrbanFarmingController/unverif';

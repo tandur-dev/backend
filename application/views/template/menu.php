@@ -34,12 +34,12 @@
         Lahan
     </a>
 
-    <a class="nav-link " href="<?php echo site_url('UrbanFarmingController'); ?>">
+    <a class="nav-link " href="<?php echo site_url('urban-farming'); ?>">
         <div class="nav-link-icon ml-2"><i data-feather="archive"></i></div>
         Urban Farming
     </a>
 
-    <a class="nav-link " href="<?php echo site_url('UserController'); ?>">
+    <a class="nav-link " href="<?php echo site_url('user'); ?>">
         <div class="nav-link-icon ml-2"><i data-feather="users"></i></div>
         User
     </a>

@@ -7,12 +7,12 @@ class UserModel extends CI_Model{
     }
 
     public function getAll(){
-        $res = $this->db->get('user')->result();
+        $res = $this->db->get('v_user')->result();
         return $res;
     }
     public function get($param){
         $filter = !empty($param['filter'])? $param['filter'] : '';
-        $res    = $this->db->get_where('user', $filter)->result();
+        $res    = $this->db->get_where('v_user', $filter)->result();
         return $res;
     }
     public function insert($param){
