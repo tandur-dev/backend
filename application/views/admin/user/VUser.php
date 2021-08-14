@@ -1,5 +1,5 @@
 <body>
-    <header class="page-header page-header-dark pb-10" style="background-color: #7CBD1E;">
+    <header class="page-header page-header-dark pb-10" style="background: linear-gradient(90deg, #7CBD1E 0%, #A7D038 100%)">
         <div class="container-fluid">
             <div class="page-header-content pt-4">
                 <div class="row align-items-center justify-content-between">
