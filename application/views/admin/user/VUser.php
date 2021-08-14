@@ -174,7 +174,6 @@
     <script>
         $(document).ready(function() {
             var table = $('#tableUser').DataTable({
-                ordering: false,
                 "order": [
                     [0, 'asc']
                 ],

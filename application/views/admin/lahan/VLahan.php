@@ -229,7 +229,6 @@
     <script>
         $(document).ready(function() {
             var table = $('#tableLahan').DataTable({
-                ordering: false,
                 "order": [
                     [0, 'asc']
                 ],

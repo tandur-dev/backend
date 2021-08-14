@@ -13,11 +13,8 @@ class ProvinsiController extends CI_Controller
 
     public function index()
     {
-        $provs = $this->MasterModel->getAll(['table' => 'md_provinsi']);
-
         $data = array(
             'title' => 'Provinsi | Tandur',
-            'provinsi' => $provs
         );
 
         $this->template->view('admin/master_data/VProvinsi', $data);
@@ -76,4 +73,38 @@ class ProvinsiController extends CI_Controller
 
         redirect('Kamar');
     } 
+
+    public function ajxGetData(){
+        $draw   = $_POST['draw'];
+        $offset = $_POST['start'];
+        $limit  = $_POST['length']; // Rows display per page
+        
+        $provs = $this->MasterModel->getDataTable(['offset' => $offset, 'limit' => $limit, 'table' => 'md_provinsi']);
+        $datas = array();
+        foreach ($provs['records'] as $item) {
+            $datas[] = array( 
+                "idProvinsi" => $item->ID_PROVINSI,
+                "nama"       => $item->NAMA_PROVINSI,
+                "aksi"       => '
+                    <div class="btn-group" role="group">
+                        <button type="button" data-toggle="modal" data-id="" data-target="#mdlFoto" class="btn btn-dark btn-sm rounded mdlFoto" data-tooltip="tooltip" data-placement="top" title="Foto">
+                            <i class="fas fa-edit"></i>
+                        </button>&nbsp;
+                        <button type="button" data-toggle="modal" data-id="" data-name="" data-target="#mdlGallery" class="btn btn-dark btn-sm rounded mdlGallery" data-tooltip="tooltip" data-placement="top" title="Gallery">
+                            <i class="fas fa-trash"></i>
+                        </button>&nbsp;
+                    </div>
+                '
+            );
+        }
+
+        $response = array(
+            "draw" => intval($draw),
+            "recordsTotal" => $provs['totalRecords'],
+            "recordsFiltered" => $provs['totalRecords'],
+            "aaData" => $datas
+        );
+
+        echo json_encode($response);
+    }
 }

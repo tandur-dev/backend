@@ -75,5 +75,38 @@ class KotaController extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Kamar berhasil dihapus! </div>');
 
         redirect('Kamar');
-    } 
+    }
+    public function ajxGetData(){
+        $draw   = $_POST['draw'];
+        $offset = $_POST['start'];
+        $limit  = $_POST['length']; // Rows display per page
+        
+        $kota = $this->MasterModel->getDataTable(['offset' => $offset, 'limit' => $limit, 'table' => 'md_kota']);
+        $datas = array();
+        foreach ($kota['records'] as $item) {
+            $datas[] = array( 
+                "idKota"    => $item->ID_KOTA,
+                "nama"       => $item->NAMA_KOTA,
+                "aksi"       => '
+                    <div class="btn-group" role="group">
+                        <button type="button" data-toggle="modal" data-id="" data-target="#mdlFoto" class="btn btn-dark btn-sm rounded mdlFoto" data-tooltip="tooltip" data-placement="top" title="Foto">
+                            <i class="fas fa-edit"></i>
+                        </button>&nbsp;
+                        <button type="button" data-toggle="modal" data-id="" data-name="" data-target="#mdlGallery" class="btn btn-dark btn-sm rounded mdlGallery" data-tooltip="tooltip" data-placement="top" title="Gallery">
+                            <i class="fas fa-trash"></i>
+                        </button>&nbsp;
+                    </div>
+                '
+            );
+        }
+
+        $response = array(
+            "draw" => intval($draw),
+            "recordsTotal" => $kota['totalRecords'],
+            "recordsFiltered" => $kota['totalRecords'],
+            "aaData" => $datas
+        );
+
+        echo json_encode($response);
+    }
 }

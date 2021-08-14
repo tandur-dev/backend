@@ -78,3 +78,14 @@ $route['user/unverif']  = 'UserController/unverif';
 $route['urban-farming']          = 'UrbanFarmingController';
 $route['urban-farming/verif']    = 'UrbanFarmingController/verif';
 $route['urban-farming/unverif']  = 'UrbanFarmingController/unverif';
+
+// master data
+$route['master/provinsi']               = 'ProvinsiController';
+$route['master/provinsi/ajxGetData']    = 'ProvinsiController/ajxGetData';
+$route['master/kota']                   = 'KotaController';
+$route['master/kota/ajxGetData']        = 'KotaController/ajxGetData';
+$route['master/kecamatan']              = 'KecamatanController';
+$route['master/kecamatan/ajxGetData']   = 'KecamatanController/ajxGetData';
+$route['master/kelurahan']              = 'KelurahanController';
+$route['master/kelurahan/ajxGetData']   = 'KelurahanController/ajxGetData';
+

@@ -10,19 +10,19 @@
     </a>
     <div class="collapse" id="collapseDashboards" data-parent="#accordionSidenav">
         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-            <a class="nav-link" href="<?php echo site_url('ProvinsiController'); ?>">
+            <a class="nav-link" href="<?php echo site_url('master/provinsi'); ?>">
                 <div class="nav-link-icon ml-2"><i data-feather="home"></i></div>
                 Provinsi
             </a>
-            <a class="nav-link" href="<?php echo site_url('KotaController'); ?>">
+            <a class="nav-link" href="<?php echo site_url('master/kota'); ?>">
                 <div class="nav-link-icon ml-2"><i data-feather="home"></i></div>
                 Kota
             </a>
-            <a class="nav-link" href="<?php echo site_url('KecamatanController'); ?>">
+            <a class="nav-link" href="<?php echo site_url('master/kecamatan'); ?>">
                 <div class="nav-link-icon ml-2"><i data-feather="home"></i></div>
                 Kecamatan
             </a>
-            <a class="nav-link" href="<?php echo site_url('KelurahanController'); ?>">
+            <a class="nav-link" href="<?php echo site_url('master/kelurahan'); ?>">
                 <div class="nav-link-icon ml-2"><i data-feather="home"></i></div>
                 Kelurahan
             </a>
