@@ -63,3 +63,8 @@ $route['api/lahan/(:any)']      = 'api/Lahan/lahanDetail/$1';
 // api urbanfarming
 $route['api/urban-farming']['post']             = 'api/UrbanFarming/index_post';
 $route['api/urban-farming/selesai']['post']     = 'api/UrbanFarming/selesai';
+
+// lahan
+$route['lahan']         = 'LahanController';
+$route['lahan/verif']   = 'LahanController/verif';
+$route['lahan/unverif'] = 'LahanController/unverif';

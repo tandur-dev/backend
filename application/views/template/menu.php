@@ -29,7 +29,7 @@
         </nav>
     </div>
 
-    <a class="nav-link " href="<?php echo site_url('LahanController'); ?>">
+    <a class="nav-link " href="<?php echo site_url('lahan'); ?>">
         <div class="nav-link-icon ml-2"><i data-feather="book-open"></i></div>
         Lahan
     </a>
