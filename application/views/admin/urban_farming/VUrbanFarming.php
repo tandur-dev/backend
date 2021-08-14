@@ -1,5 +1,5 @@
 <body>
-    <header class="page-header page-header-dark pb-10" style="background-color: #7CBD1E;">
+    <header class="page-header page-header-dark pb-10" style="background: linear-gradient(90deg, #7CBD1E 0%, #A7D038 100%)">
         <div class="container-fluid">
             <div class="page-header-content pt-4">
                 <div class="row align-items-center justify-content-between">
@@ -18,7 +18,7 @@
         <div class="card mb-4">
             <div class="card-header">
                 <?= $this->session->flashdata('message'); ?>
-                Daftar Lahan
+                Daftar Urban Farming
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -42,10 +42,10 @@
                                 $btnVerif = "";
                                 if($item->ISVERIF_URBAN == "0"){
                                     $btnVerif = '
-                                            <button type="button" data-toggle="modal" data-id="'.$item->ID_URBAN.'" data-name="" data-target="#mdlVerif" class="btn btn-green btn-sm rounded mdlVerif" data-tooltip="tooltip" data-placement="top" title="Verif">
+                                            <button type="button" data-toggle="modal" data-id="'.$item->ID_URBAN.'" data-email="'.$item->EMAIL_PENYEWA.'" data-name="" data-target="#mdlVerif" class="btn btn-green btn-sm rounded mdlVerif" data-tooltip="tooltip" data-placement="top" title="Verif">
                                                 <i class="fas fa-check"></i>
                                             </button>&nbsp;
-                                            <button type="button" data-toggle="modal" data-id="'.$item->ID_URBAN.'" data-name="" data-target="#mdlUnverif" class="btn btn-danger btn-sm rounded mdlUnverif" data-tooltip="tooltip" data-placement="top" title="Unverif">
+                                            <button type="button" data-toggle="modal" data-id="'.$item->ID_URBAN.'" data-email="'.$item->EMAIL_PENYEWA.'" data-name="" data-target="#mdlUnverif" class="btn btn-danger btn-sm rounded mdlUnverif" data-tooltip="tooltip" data-placement="top" title="Unverif">
                                                 <i class="fa fa-times"></i>
                                             </button>&nbsp;' ;
                                     $status = '<span class="badge badge-light">Belum Terverikasi</span>';
@@ -101,6 +101,7 @@
                 <div class="modal-footer">
                     <form action="<?= site_url('urban-farming/verif')?>" method="POST">
                         <input type="hidden" id="mdlVerif_id" name="ID_URBAN">
+                        <input type="hidden" id="mdlVerif_email" name="EMAIL_USER">
                         <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Batal</button>
                         <button type="submit" class="btn btn-green"><i class="fa fa-check mr-1"></i>Setujui</button>
                     </form>
@@ -125,6 +126,7 @@
                 <div class="modal-footer">
                     <form action="<?= site_url('urban-farming/unverif')?>" method="POST">
                         <input type="hidden" id="mdlUnverif_id" name="ID_URBAN">
+                        <input type="hidden" id="mdlUnverif_email" name="EMAIL_USER">
                         <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Batal</button>
                         <button type="submit" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Tolak</button>
                     </form>
@@ -235,13 +237,19 @@
         });
         $('#tableUrban tbody').on('click', '.mdlVerif', function(){
             const id = $(this).data('id');
+            const email = $(this).data('email');
+
             $('.mdlVerif_name').html(id);
             $('#mdlVerif_id').val(id);
+            $('#mdlVerif_email').val(email);
         })
         $('#tableUrban tbody').on('click', '.mdlUnverif', function(){
             const id = $(this).data('id');
+            const email = $(this).data('email');
+
             $('.mdlUnverif_name').html(id);
             $('#mdlUnverif_id').val(id);
+            $('#mdlUnverif_email').val(email);
         })
         $('#tableUrban tbody').on('click', '.mdlFoto', function(){
             const id    = $(this).data('id');

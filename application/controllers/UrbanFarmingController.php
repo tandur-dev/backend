@@ -8,7 +8,9 @@ class UrbanFarmingController extends CI_Controller
         $this->load->helper('file');
         $this->load->library('table');
         $this->load->library('upload');
+        $this->load->library('notification');
         $this->load->model('UrbanFarmingModel');
+        $this->load->model('UserModel');
     }
 
     public function index()
@@ -16,7 +18,7 @@ class UrbanFarmingController extends CI_Controller
         $urbanfarmings = $this->UrbanFarmingModel->getAll();
 
         $data = array(
-            'title' => 'Lahan | Tandur',
+            'title' => 'Urban Farming | Tandur',
             'urbanfarmings' => $urbanfarmings
         );
 
@@ -30,6 +32,12 @@ class UrbanFarmingController extends CI_Controller
         $param['updated_at']         = date('Y-m-d H:i:s');
         $this->UrbanFarmingModel->update($param);
 
+        $user = $this->UserModel->getToken(['filter' => ['EMAIL_USER' => $param['EMAIL_USER']]]);
+        $notif['regisIds']  = $user;
+        $notif['title']     = "Info Pengajuan Urban Farming";
+        $notif['message']   = "Pengajuan Urban Farming ".$param['ID_URBAN']." Telah Disetujui";
+        $this->notification->push($notif);
+
         redirect('urban-farming');
     }
     public function unverif(){
@@ -39,6 +47,12 @@ class UrbanFarmingController extends CI_Controller
         $param['TGLVERIF_URBAN']    = date('Y-m-d');
         $param['updated_at']        = date('Y-m-d H:i:s');
         $this->UrbanFarmingModel->update($param);
+
+        $user = $this->UserModel->getToken(['filter' => ['EMAIL_USER' => $param['EMAIL_USER']]]);
+        $notif['regisIds']  = $user;
+        $notif['title']     = "Info Pengajuan Urban Farming";
+        $notif['message']   = "Pengajuan Urban Farming ".$param['ID_URBAN']." Ditolak";
+        $this->notification->push($notif);
 
         redirect('urban-farming');
     }
