@@ -29,7 +29,6 @@
                             <th>Email Pemilik</th>
                             <th>Nama Lahan</th>
                             <th>Alamat Lahan</th>
-                            <th>Kota Lahan</th>
                             <th>Ukuran</th>
                             <th>Harga</th>
                             <th>Status</th>
@@ -59,8 +58,7 @@
                                         <td>'.$item->ID_LAHAN.'</td>
                                         <td>'.$item->EMAIL_USER.'</td>
                                         <td>'.$item->NAMA_LAHAN.'</td>
-                                        <td>'.$item->ALAMAT_LAHAN.'</td>
-                                        <td>'.$item->NAMA_KOTA.'</td>
+                                        <td>'.$item->ALAMAT_LAHAN.', '.$item->NAMA_KELURAHAN.', '.$item->NAMA_KECAMATAN.', '.$item->NAMA_KOTA.', '.$item->NAMA_PROVINSI.'</td>
                                         <td>'.$item->PANJANG_LAHAN.' x '.$item->LEBAR_LAHAN.' Meter</td>
                                         <td>Rp.'.number_format($item->HARGA_LAHAN).'</td>
                                         <td>'.$status.'</td>
@@ -104,7 +102,7 @@
                 <div class="modal-footer">
                     <form action="<?= site_url('lahan/verif')?>" method="POST">
                         <input type="hidden" id="mdlVerif_id" name="ID_LAHAN">
-                        <button type="button" class="btn btn-dark" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Batal</button>
+                        <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Batal</button>
                         <button type="submit" class="btn btn-green"><i class="fa fa-check mr-1"></i>Setujui</button>
                     </form>
                 </div>
@@ -128,7 +126,7 @@
                 <div class="modal-footer">
                     <form action="<?= site_url('lahan/unverif')?>" method="POST">
                         <input type="hidden" id="mdlUnverif_id" name="ID_LAHAN">
-                        <button type="button" class="btn btn-dark" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Batal</button>
+                        <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Batal</button>
                         <button type="submit" class="btn btn-danger"><i class="fa fa-check mr-1"></i>Tolak</button>
                     </form>
                 </div>
@@ -250,8 +248,6 @@
             const id    = $(this).data('id');
             const foto1 = $(this).data('foto1');
             const foto2 = $(this).data('foto2');
-
-            console.log(foto1)
 
             $('.mdlFoto_id').html(id);
             $('#mdlFoto_foto1').attr('src', foto1);

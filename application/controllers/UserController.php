@@ -13,13 +13,33 @@ class UserController extends CI_Controller
 
     public function index()
     {
-        $user = $this->UserModel->getAll();
+        $users = $this->UserModel->getAll();
 
         $data = array(
             'title' => 'User | Tandur',
-            'user' => $user
+            'users' => $users
         );
 
         $this->template->view('admin/user/VUser', $data);
-    }    
+    }
+    public function verif(){
+        $param = $_POST;
+        
+        $param['ISVERIF_USER']      = "1";
+        $param['TGLVERIF_USER']     = date('Y-m-d');
+        $param['updated_at']        = date('Y-m-d H:i:s');
+        $this->UserModel->update($param);
+
+        redirect('user');
+    }
+    public function unverif(){
+        $param = $_POST;
+        
+        $param['ISVERIF_USER']      = "2";
+        $param['TGLVERIF_USER']     = date('Y-m-d');
+        $param['updated_at']        = date('Y-m-d H:i:s');
+        $this->UserModel->update($param);
+
+        redirect('user');
+    }
 }
