@@ -2,7 +2,7 @@
 <footer class="footer mt-auto footer-light">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6 small">Copyright &#xA9; Hotel Biety</div>
+            <div class="col-md-6 small">Copyright &#xA9; Tandur</div>
         </div>
     </div>
 </footer>
