@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Hotel Biety Project" />
+    <meta name="description" content="Tandur Project" />
     <meta name="author" content />
     <title><?= $title; ?></title>
     <link rel="icon" type="image/x-icon" href="<?= base_url(); ?>assets/img/ico.png" />
@@ -251,7 +251,7 @@
                     <h5>Apakah anda yakin keluar ? </h5>
                 </div>
                 <div class="modal-footer">
-                    <a href="<?= base_url('Login') ?>" type="button" class="btn btn-danger"><i class="fa fa-sign-out-alt mr-1"></i>Keluar</a>
+                    <a href="<?= site_url('login') ?>" type="button" class="btn btn-danger"><i class="fa fa-sign-out-alt mr-1"></i>Keluar</a>
                     <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Tutup</button>
                 </div>
             </div>
