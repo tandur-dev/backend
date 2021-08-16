@@ -9,6 +9,9 @@ class ProvinsiController extends CI_Controller
         $this->load->library('table');
         $this->load->library('upload');
         $this->load->model('MasterModel');
+        if (empty($this->session->userdata('user_logged')) || $this->session->userdata('user_logged') != 'admin') {
+			redirect('login');
+		};
     }
 
     public function index()

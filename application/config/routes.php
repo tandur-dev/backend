@@ -53,6 +53,10 @@ $route['default_controller'] = 'AuthController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+
+// user
+$route['dashboard']          = 'DashboardController';
+
 // api lahan
 $route['api/lahan']         	= 'api/Lahan/index';
 $route['api/lahan/foto']    	= 'api/Lahan/foto';
@@ -91,4 +95,5 @@ $route['master/kelurahan/ajxGetData']   = 'KelurahanController/ajxGetData';
 
 $route['login']          = 'AuthController';
 $route['login/auth']     = 'AuthController/auth_admin';
+$route['logout']         = 'AuthController/logout';
 

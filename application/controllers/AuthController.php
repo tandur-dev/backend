@@ -17,16 +17,19 @@ class AuthController extends CI_Controller
         $pass = $this->input->post('password');
 
         if ($username === "admin" && $pass === "admin") {
-            $session = array(
-                'who' => "admin",
-                'isLogin' => true
-            );
-            $this->session->set_userdata($session);
 
-            redirect('DashboardController');
+            $this->session->set_userdata('user_logged', $username);
+
+            redirect('dashboard');
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Username / password salah! </div>');
             redirect('login');
         }
+    }
+
+    public function logout(){
+        $this->session->sess_destroy();
+
+        redirect('login');
     }
 }

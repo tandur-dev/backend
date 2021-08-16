@@ -5,6 +5,9 @@ class DashboardController extends CI_Controller
     {
         parent::__construct();
         $this->load->model('UserModel');
+        if (empty($this->session->userdata('user_logged')) || $this->session->userdata('user_logged') != 'admin') {
+			redirect('login');
+		};
     }
 
     public function index()
