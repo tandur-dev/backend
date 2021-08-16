@@ -39,6 +39,9 @@ class LahanModel extends CI_Model{
             mk3.NAMA_KELURAHAN ,
             l.HARGA_LAHAN ,
             l.PEMILIK_LAHAN ,
+            l.FOTO1_LAHAN ,
+            l.FASILITAS_LAHAN ,
+            l.BINTANG_LAHAN ,
             l.ALAMAT_LAHAN ,
             l.LATITUDE_LAHAN ,
             l.LONGITUDE_LAHAN 
