@@ -11,6 +11,9 @@ class LahanController extends CI_Controller
         $this->load->library('notification');
         $this->load->model('LahanModel');
         $this->load->model('UserModel');
+        if (empty($this->session->userdata('user_logged')) || $this->session->userdata('user_logged') != 'admin') {
+			redirect('login');
+		};
     }
 
     public function index()

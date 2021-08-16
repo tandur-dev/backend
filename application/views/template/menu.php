@@ -1,5 +1,5 @@
 <div class="nav accordion" id="accordionSidenav">
-    <a class="nav-link " href="<?php echo site_url('DashboardController'); ?>">
+    <a class="nav-link " href="<?php echo site_url('dashboard'); ?>">
         <div class="nav-link-icon ml-2"><i data-feather="clipboard"></i></div>
         Dashboard
     </a>
