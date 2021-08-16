@@ -41,6 +41,8 @@ class LahanModel extends CI_Model{
             l.PEMILIK_LAHAN ,
             l.FOTO1_LAHAN ,
             l.FASILITAS_LAHAN ,
+            l.PANJANG_LAHAN ,
+            l.LEBAR_LAHAN ,
             l.BINTANG_LAHAN ,
             l.ALAMAT_LAHAN ,
             l.LATITUDE_LAHAN ,
